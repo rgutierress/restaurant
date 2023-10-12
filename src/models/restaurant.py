@@ -43,7 +43,7 @@ class Restaurant:
     def set_number_served(self, total_customers):
         """Defina o número total de pessoas atendidas por este restaurante até o momento."""
         # BUG 1: Não estava retornando o numero de pessoas atendidas
-        if not self.isNumber(total_customers):
+        if self.isNumber(total_customers):
             return "Digite apenas números"
         else:
             if self.open:

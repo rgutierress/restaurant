@@ -69,9 +69,10 @@ class TestRestaurant(unittest.TestCase):
         restaurant = Restaurant("Restaurante teste", "Brasileira")
         restaurant.open_restaurant()
 
-        resultado_esperado = QUANTIDADE_INICIAL + QUANTIDADE_ACRESCIDO
         restaurant.set_number_served(QUANTIDADE_INICIAL)
         resultado = restaurant.increment_number_served(QUANTIDADE_ACRESCIDO)
+        print(resultado)
+        resultado_esperado = QUANTIDADE_INICIAL + QUANTIDADE_ACRESCIDO
 
         assert restaurant.open
         assert resultado == resultado_esperado
