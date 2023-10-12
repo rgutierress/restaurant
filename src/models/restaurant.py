@@ -1,34 +1,45 @@
 class Restaurant:
     """Model de restaurante simples."""
 
-    def __init__(self, restaurant_name, cuisine_type):
+    def __init__(self, restaurant_name, cuisine_type,statusRestaurant):
         self.restaurant_name = restaurant_name.title()
         self.cuisine_type = cuisine_type
         self.number_served = 0
-        self.open = False
+        self.open = statusRestaurant
+
 
     def describe_restaurant(self):
         """Imprima uma descrição simples da instância do restaurante."""
-        print(f"Esse restaturante chama {self.cuisine_type} and serve {self.cuisine_type}.")
-        print(f"Esse restaturante está servindo {self.number_served} consumidores desde que está aberto.")
+
+        # BUG 1: A primeira mensagem não retorna o nome do restaurante
+        # Alterada a variavel self.cuisine_type para self.restaurant_name
+        # Melhoria 1: Ajuste na mensagem and para e, mantendo o padrão português
+        # Melhoria 2: Uso de dois prints para retornar a mensagem. Ajustado para um print inserindo quebra de linha
+        # Melhoria 3: Inclusão da palavra culinária na frase
+        # BUG 2: O metodo não estava retornando nenhuma string
+
+        return f"Esse restaturante chama {self.restaurant_name} e serve culinária {self.cuisine_type}.\n Esse restaturante está servindo {self.number_served} consumidores desde que está aberto."
 
     def open_restaurant(self):
         """Imprima uma mensagem indicando que o restaurante está aberto para negócios."""
+        #BUG 1: Ambas as validações retornam o restaurante aberto
+        #BUG 2: Acrescentado o return para as mensagens no método
+        #BUG 3: Removido o método close_restaurant, pois foi ajustado um metodo para validar o status do restaurante
+        #Removido a linha self.number_served = 0, pois não é utilizada no método
+
         if not self.open:
-            self.open = False
-            self.number_served = -2
-            print(f"{self.restaurant_name} agora está aberto!")
+            self.open = True
+            return f"{self.restaurant_name} agora está aberto!"
         else:
-            print(f"{self.restaurant_name} já está aberto!")
+            return f"{self.restaurant_name} já está aberto!"
 
     def close_restaurant(self):
         """Imprima uma mensagem indicando que o restaurante está fechado para negócios."""
-        if self.open:
+        if self.open == True:
             self.open = False
-            self.number_served = 0
-            print(f"{self.restaurant_name} agora está fechado!")
+            return f"{self.restaurant_name} agora está fechado!"
         else:
-            print(f"{self.restaurant_name} já está fechado!")
+            return f"{self.restaurant_name} já está fechado!"
 
     def set_number_served(self, total_customers):
         """Defina o número total de pessoas atendidas por este restaurante até o momento."""
