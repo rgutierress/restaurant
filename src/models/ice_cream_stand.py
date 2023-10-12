@@ -14,10 +14,8 @@ class IceCreamStand(Restaurant):
         self.flavors = flavors_list
 
     # Refactory:
-    # 1. Uma lista vazia chamada available_flavors foi criada para armazenar os sabores disponíveis. Isso permite que a função acumule os sabores disponíveis na lista.
-    # 2. Em vez de usar print para mostrar os sabores na saída, a função agora usa append para adicionar cada sabor à lista available_flavors.
-    # 3. A função retorna a lista available_flavors quando termina de percorrer os sabores.
-    # 4. Se a lista de sabores estiver vazia, a função retorna uma lista vazia, indicando que não há sabores disponíveis.
+    # 1. Armazenamento de sabores disponíveis de forma separada e imprime diretamente.
+    # 2. Valor de retorno imprime os sabores disponíveis e uma mensagem de estoque vazio.
     def flavors_available(self):
         """Percorra a lista de sabores disponíveis e imprima."""
         if self.flavors:
@@ -31,8 +29,11 @@ class IceCreamStand(Restaurant):
             print("Estamos sem estoque atualmente!")
             return []
 
+    # Bug:
+    # 1. Está imprimindo a lista completa de sabores disponíveis no qual deveria imprimir apenas o sabor informado em flavor
     # Refactory:
-    # 1, Adicionado o "return" dentro da método de verificação.
+    # 1. Adição o "return" dentro do método de verificação.
+    # 2. Substituíção de 'self.flavor' para 'flavor'.
     def find_flavor(self, flavor):
         """Verifica se o sabor informado está disponível na lista de sabores."""
         if self.flavors:
@@ -43,8 +44,11 @@ class IceCreamStand(Restaurant):
         else:
             return "Estamos sem estoque atualmente."
 
+    #Bug:
+    # 1. Estava imprimindo a lista completa de sabores em vez de apenas o sabor especificado.
     # Refactory:
-    # 1. Adicionado o "return" dentro da método de verificação.
+    # 1. Substituíção de 'self.flavor' para 'flavor'.
+    # 2. Adição o "return" dentro do método de verificação.
     def add_flavor(self, flavor):
         """Adiciona o sabor informado ao estoque."""
         if self.open:
